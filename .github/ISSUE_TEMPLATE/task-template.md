@@ -1,8 +1,8 @@
 ---
-name: Subtask Template
-about: Add a subtask that is sub-part of an user-story.
-title: "[Subtask] - *ENTER TITLE*"
-labels: "subtask"
+name: Task Template
+about: Add a task that is sub-part of an user-story.
+title: "[Task] - *ENTER TITLE*"
+labels: "task"
 assignees: ""
 ---
 

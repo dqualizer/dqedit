@@ -20,4 +20,3 @@ jobs:
           github_token: ${{ secrets.ADD_ISSUES_TO_PROJECTS_PAT }}
           source_repo_path: dqualizer/template
           upstream_branch: main
-
