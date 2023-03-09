@@ -1,0 +1,23 @@
+name: actions-template-sync
+
+on:
+  schedule:
+  - cron:  "0 1 * * *"
+  workflow_dispatch:
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.ADD_ISSUES_TO_PROJECTS_PAT }}
+      - name: actions-template-sync
+        uses: AndreasAugustin/actions-template-sync@v0.7.3
+        with:
+          github_token: ${{ secrets.ADD_ISSUES_TO_PROJECTS_PAT }}
+          source_repo_path: dqualizer/template
+          upstream_branch: main
+
