@@ -1,9 +1,4 @@
-# template
+# dqedit
+The dqedit component is the editor for the mapping necessary to translate domain questions / RQA definitions to technical RQA configurations. The editor can be used by domain and technical experts during DDD-based workshops, e.g., for event storming or DST, where the domain elements are identified and defined.
 
-This is the standard template for dqualizer projects
-
-## What's the purpose of this repository?
-
-- A standardized starting point for all dqualizer repositories
-- Adds a Github-Workflow that automatically adds all issues and pull requests to the project status kanban board
-- Adds issue templates for dependencies and epics
+A more detailed description of this component's architecture is provided in the [arc42 document](https://github.com/dqualizer/dqualizer/tree/main/docs/asciidoc). 
