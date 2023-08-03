@@ -1,0 +1,73 @@
+{
+	"version": 1.0,
+	"context": "string",
+	"api": "OpenAPI_3.0.1",
+	"server_info": [
+		{
+			"host": "localhost:8080",
+			"environment": "TEST"
+		}
+	],
+	"field": {
+		"/kinoapp/{version}/open": {
+			"operation_id": "openApp",
+			"operation": "GET",
+			"input": [
+				{
+					"name": "version",
+					"in": "url",
+					"required": true,
+					"type": "long"
+				}
+			],
+			"body": {
+				"type": "Nutzer"
+			},
+			"output": [
+				{
+					"type": "string",
+					"expected_code": 200
+				},
+				{
+					"type": "string",
+					"expected_code": 404
+				}
+			]
+		},
+		"/graphql": {
+			"operation_id": "showAll",
+			"operation": "Query",
+			"input": [],
+			"body": {},
+			"output": [
+				{
+					"type": "string"
+				}
+			]
+		}
+	},
+	"data_schemas": {
+		"Nutzer": {
+			"type": "object",
+			"properties": [
+				{
+					"name": "id",
+					"type": "long"
+				},
+				{
+					"name": "fullname",
+					"type": "string"
+				},
+				{
+					"name": "birthDate",
+					"type": "date"
+				},
+				{
+					"name": "custom",
+					"type": "#/data_schemas/Customclass"
+				}
+			]
+		},
+		"Customclass": {}
+	}
+}

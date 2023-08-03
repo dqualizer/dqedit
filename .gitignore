@@ -1,0 +1,14 @@
+.DS_Store
+node_modules
+/build
+.next/
+.prettierrc
+.prettierignore
+.eslintrc.cjs
+.eslintignore
+.eslintrc.json
+/package
+.env
+.env.*
+!.env.example
+
