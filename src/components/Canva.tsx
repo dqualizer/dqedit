@@ -7,6 +7,7 @@ import ReactFlow, {
   Node,
   ReactFlowProvider,
   addEdge,
+  updateEdge,
   useEdgesState,
   useNodesState,
   useReactFlow,
@@ -142,16 +143,16 @@ const Canvas = () => {
     );
   };
 
-  const onDragOver = useCallback((event) => {
+  const onDragOver = useCallback((event:any) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
   }, []);
 
   const onDrop = useCallback(
-    (event) => {
+    (event:React.DragEvent) => {
       event.preventDefault();
 
-      const reviver = (key, value) => {
+      const reviver = (key: any, value: any) => {
         if (typeof value === "object" && value !== null) {
           if (value.dataType === "Map") {
             return new Map(value.value);
@@ -160,6 +161,8 @@ const Canvas = () => {
         return value;
       };
 
+      if(reactFlowWrapper === null) return;
+      //@ts-ignore
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
       const type = event.dataTransfer.getData("application/reactflow");
       const data = JSON.parse(
@@ -198,6 +201,7 @@ const Canvas = () => {
 
   const onSave = useCallback(() => {
     if (rfInstance) {
+      //@ts-ignore
       const flow = rfInstance.toObject();
       localStorage.setItem(flowKey, JSON.stringify(flow));
       toggleToast("Saved flow");
@@ -206,6 +210,7 @@ const Canvas = () => {
 
   const onRestore = useCallback(() => {
     const restoreFlow = async () => {
+      //@ts-ignore
       const flow = JSON.parse(localStorage.getItem(flowKey));
 
       if (flow) {
@@ -226,6 +231,7 @@ const Canvas = () => {
 
   const onDelete = (node:Node) => {
     if (rfInstance !== null) {
+      //@ts-ignore
       rfInstance.removeElements([node]);
     } else {
       console.log("rfInstance is null");
@@ -261,6 +267,7 @@ const Canvas = () => {
               onEdgeUpdateStart={onEdgeUpdateStart}
               onEdgeUpdateEnd={onEdgeUpdateEnd}
               nodeTypes={nodeTypes}
+              //@ts-ignore
               onInit={setRfInstance}
               fitView
               fitViewOptions={fitViewOptions}

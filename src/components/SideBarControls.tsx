@@ -48,8 +48,11 @@ export const SidebarControls: React.FC<{
 
   const onDragStart = (event: DragEvent, nodeType: string) => {
     if (event) {
+      //@ts-ignore
       event.dataTransfer.setData("application/reactflow", nodeType);
+      //@ts-ignore
       event.dataTransfer.setData("application/json", "{}");
+      //@ts-ignore
       event.dataTransfer.effectAllowed = "move";
     }
   };
@@ -71,7 +74,7 @@ export const SidebarControls: React.FC<{
         <button
           value="AddApiMapper"
           draggable
-          onDragStart={(event) => {
+          onDragStart={(event:any) => {
             onDragStart(event, "apiMapper");
           }}
           onClick={addApiMapperNode}
@@ -82,7 +85,7 @@ export const SidebarControls: React.FC<{
         <button
           value="AddMapper"
           draggable
-          onDragStart={(event) => {
+          onDragStart={(event:any) => {
             onDragStart(event, "mapper");
           }}
           onClick={addMapperNode}

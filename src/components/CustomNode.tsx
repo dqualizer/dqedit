@@ -7,6 +7,7 @@ export const ActorNode: React.FC<{ data: any }> = (data) => {
   const [selected, setSelected] = useState<string>("");
 
   useEffect(() => {
+    //@ts-ignore
     if (data.selected) {
       setSelected("border-accent-focus");
     } else {
@@ -22,7 +23,7 @@ export const ActorNode: React.FC<{ data: any }> = (data) => {
   const waypoints = () => {
     const waypointsArray = data.data.dst.get("waypoints");
     if (waypointsArray) {
-      const waypointsString = waypointsArray.map((point) => {
+      const waypointsString = waypointsArray.map((point:any) => {
         return `[x: ${point.x}, y: ${point.y}]`;
       }).join(" ");
       return waypointsString;
@@ -76,6 +77,7 @@ export const MapperNode: React.FC<{ data: any }> = (data) => {
   const [selected, setSelected] = useState<string>("");
 
   useEffect(() => {
+    //@ts-ignore
     if (data.selected) {
       setSelected("border-accent-focus");
     } else {
@@ -143,6 +145,7 @@ export const ApiMapperNode: React.FC<{ data: any }> = (data) => {
   const [selected, setSelected] = useState<string>("");
 
   useEffect(() => {
+    //@ts-ignore
     if (data.selected) {
       setSelected("border-accent-focus");
     } else {
@@ -155,9 +158,8 @@ export const ApiMapperNode: React.FC<{ data: any }> = (data) => {
     console.log("deleting node is pressed with node", data.data.dst);
   };
 
-  const bg = data.selected ? "border-accent-focus" : "";
   return (
-    <div className={"card card-bordered w-96 bg-neutral " + bg}>
+    <div className={"card card-bordered w-96 bg-neutral " + selected}>
       <div className="card-body">
         <h3 className="card-title">Api Mapping</h3>
         <Handle
@@ -204,6 +206,7 @@ export const FieldNode: React.FC<{
   const [selected, setSelected] = useState<string>("");
 
   useEffect(() => {
+    //@ts-ignore
     if (data.selected) {
       setSelected("border-accent-focus");
     } else {

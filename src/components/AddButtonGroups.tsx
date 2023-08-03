@@ -4,7 +4,7 @@ const AddDstNodeButton: React.FC<{
   dst: Map<string, string>;
   addNode: Function;
 }> = ({ dst, addNode }) => {
-  const onDragStart = (event: DragEvent, type: string) => {
+  const onDragStart = (event:any, type: string) => {
     const replacer = (key: any, value: any) => {
       if (value instanceof Map) {
         return {
@@ -15,12 +15,14 @@ const AddDstNodeButton: React.FC<{
         return value;
       }
     };
-
+    //@ts-ignore
     event.dataTransfer.setData("application/reactflow", type);
+    //@ts-ignore
     event.dataTransfer.setData(
       "application/json",
       JSON.stringify(dst, replacer)
-    );
+      );
+      //@ts-ignore
     event.dataTransfer.effectAllowed = "move";
   };
 
