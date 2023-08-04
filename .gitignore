@@ -4,9 +4,6 @@ node_modules
 .next/
 .prettierrc
 .prettierignore
-.eslintrc.cjs
-.eslintignore
-.eslintrc.json
 /package
 .env
 .env.*
