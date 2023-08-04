@@ -1,5 +1,5 @@
 # Verwende das offizielle Node.js-Image als Basis
-FROM docker.io/library/node:19-slim
+FROM --platform=$BUILDPLATFORM node:20-slim
 
 # Setze das Arbeitsverzeichnis im Container
 WORKDIR /usr/src/app
