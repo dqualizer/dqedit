@@ -1,5 +1,5 @@
 # Verwende das offizielle Node.js-Image als Basis
-FROM node:20-bookworm
+FROM docker.io/library/node:20-slim
 
 # Setze das Arbeitsverzeichnis im Container
 WORKDIR /usr/src/app
