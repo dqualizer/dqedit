@@ -1,5 +1,5 @@
 # Verwende das offizielle Node.js-Image als Basis
-FROM node:20-buster
+FROM node:20-bookworm
 
 # Setze das Arbeitsverzeichnis im Container
 WORKDIR /usr/src/app
