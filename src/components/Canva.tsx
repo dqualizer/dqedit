@@ -83,7 +83,7 @@ const Canvas = () => {
   );
 
   useEffect(() => {
-    const data_file = fetch("http://localhost:3000/wps_example.dst")
+    const data_file = fetch("http://localhost:3000/werkstatt.dst")
       .then((file) => file.text())
       .then((data) => parse_domain_story(data))
       .then(({ domain, dsts }) => {
@@ -143,13 +143,13 @@ const Canvas = () => {
     );
   };
 
-  const onDragOver = useCallback((event:any) => {
+  const onDragOver = useCallback((event: any) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
   }, []);
 
   const onDrop = useCallback(
-    (event:React.DragEvent) => {
+    (event: React.DragEvent) => {
       event.preventDefault();
 
       const reviver = (key: any, value: any) => {
@@ -161,7 +161,7 @@ const Canvas = () => {
         return value;
       };
 
-      if(reactFlowWrapper === null) return;
+      if (reactFlowWrapper === null) return;
       //@ts-ignore
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
       const type = event.dataTransfer.getData("application/reactflow");
@@ -171,12 +171,12 @@ const Canvas = () => {
       );
 
       const x = event.clientX - reactFlowBounds.left;
-      const y = event.clientY - reactFlowBounds.top; 
+      const y = event.clientY - reactFlowBounds.top;
 
       if (typeof type === "undefined" || !type) {
         return;
       }
-      
+
       addNodeWithData(x, y, type, data);
     },
     [project]
@@ -229,7 +229,7 @@ const Canvas = () => {
     toggleToast("Not yet implemented");
   }, []);
 
-  const onDelete = (node:Node) => {
+  const onDelete = (node: Node) => {
     if (rfInstance !== null) {
       //@ts-ignore
       rfInstance.removeElements([node]);

@@ -23,9 +23,11 @@ export const ActorNode: React.FC<{ data: any }> = (data) => {
   const waypoints = () => {
     const waypointsArray = data.data.dst.get("waypoints");
     if (waypointsArray) {
-      const waypointsString = waypointsArray.map((point:any) => {
-        return `[x: ${point.x}, y: ${point.y}]`;
-      }).join(" ");
+      const waypointsString = waypointsArray
+        .map((point: any) => {
+          return `[x: ${point.x}, y: ${point.y}]`;
+        })
+        .join(" ");
       return waypointsString;
     } else {
       return "";
@@ -33,7 +35,11 @@ export const ActorNode: React.FC<{ data: any }> = (data) => {
   };
 
   return (
-    <div className={"card card-bordered w-96 bg-primary-focus " + selected}>
+    <div
+      className={
+        "card card-bordered w-96 bg-primary-focus text-white" + selected
+      }
+    >
       <div className="card-body">
         <h3 className="card-title">
           {data.data.dst.get("type")} - {data.data.dst.get("name")}
@@ -93,7 +99,7 @@ export const MapperNode: React.FC<{ data: any }> = (data) => {
   return (
     <div className={"card card-bordered w-96 bg-neutral " + selected}>
       <div className="card-body">
-        <h3 className="card-title">Mapping</h3>
+        <h3 className="card-title text-white">Mapping</h3>
         <Handle
           type="source"
           id="apiMapping"
@@ -102,24 +108,25 @@ export const MapperNode: React.FC<{ data: any }> = (data) => {
         />
         <div className="join join-vertical space-y-2">
           <input
-            className="input input-bordered w-full max-w-xs join-item"
+            className="input input-bordered w-full max-w-xs join-item text-black"
             type="text"
             name="operation_id"
             placeholder="operation_id"
           />
           <select
-            className="select select-bordered w-full max-w-ws join-item"
+            className="select select-bordered w-full max-w-ws join-item text-black"
             defaultValue="select"
           >
             <option value="select" disabled>
               select a type
             </option>
+            <option value="service">Service</option>
             <option value="class">Class</option>
             <option value="method">Method</option>
             <option value="interface">Interface</option>
           </select>
           <input
-            className="input input-bordered w-full max-w-xs join-item"
+            className="input input-bordered w-full max-w-xs join-item text-black"
             type="text"
             name="implements"
             placeholder="implements"
@@ -159,9 +166,9 @@ export const ApiMapperNode: React.FC<{ data: any }> = (data) => {
   };
 
   return (
-    <div className={"card card-bordered w-96 bg-neutral " + selected}>
+    <div className={"card card-bordered w-96 bg-neutral text-white" + selected}>
       <div className="card-body">
-        <h3 className="card-title">Api Mapping</h3>
+        <h3 className="card-title text-white">Api Mapping</h3>
         <Handle
           type="source"
           id="apiMapping"
@@ -170,18 +177,19 @@ export const ApiMapperNode: React.FC<{ data: any }> = (data) => {
         />
         <div className="join join-vertical space-y-2">
           <input
-            className="input input-bordered w-full max-w-xs join-item"
+            className="input input-bordered w-full max-w-xs join-item text-black"
             type="text"
             name="operation_id"
             placeholder="operation_id"
           />
           <select
-            className="select select-bordered w-full max-w-ws join-item"
+            className="select select-bordered w-full max-w-ws join-item text-black"
             defaultValue="select"
           >
             <option value="select" disabled>
               select a type
             </option>
+            <option value="service">Service</option>
             <option value="class">Class</option>
             <option value="method">Method</option>
             <option value="interface">Interface</option>
