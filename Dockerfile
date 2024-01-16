@@ -1,23 +1,43 @@
-# Verwende das offizielle Node.js-Image als Basis
-FROM --platform=$BUILDPLATFORM node:20-slim
+FROM node:21-alpine AS base
 
-# Setze das Arbeitsverzeichnis im Container
-WORKDIR /usr/src/app
+FROM base AS deps
+RUN apk add --no-cache libc6-compat
 
-# Kopiere package.json und package-lock.json in das Arbeitsverzeichnis
-COPY package*.json ./
+WORKDIR /app
 
-# Installiere die Abhängigkeiten
-RUN npm install
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+RUN \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
+  else echo "Lockfile not found." && exit 1; \
+  fi
 
-# Kopiere den Rest des Quellcodes in das Arbeitsverzeichnis
+
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+RUN yarn build
 
-# Baue die Next.js-App im Produktionsmodus
-RUN npm run build
+FROM base AS runner
+WORKDIR /app
 
-# Exponiere den Port, auf dem die Anwendung läuft
+ENV NODE_ENV=production
+
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
+
+COPY --from=builder /app/public ./public
+
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
 EXPOSE 3000
 
-# Starte die Anwendung
-CMD ["npm", "start"]
+ENV PORT 3000
+ENV HOSTNAME 0.0.0.0
+
+CMD ["node", "server.js"]

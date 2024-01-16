@@ -9,24 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "20.4.4",
-    "@types/react": "18.2.15",
-    "@types/react-dom": "18.2.7",
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "autoprefixer": "10.4.14",
-    "daisyui": "^3.5.0",
-    "eslint": "8.45.0",
-    "eslint-config-next": "13.4.12",
-    "next": "13.4.12",
-    "postcss": "8.4.27",
+    "@types/node": "20.11.4",
+    "@types/react": "18.2.48",
+    "@types/react-dom": "18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "autoprefixer": "10.4.16",
+    "daisyui": "^4.6.0",
+    "eslint": "8.56.0",
+    "eslint-config-next": "14.0.4",
+    "next": "14.0.4",
+    "postcss": "8.4.33",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "reactflow": "^11.7.4",
-    "tailwindcss": "3.3.3",
-    "typescript": "5.1.6",
-    "uuid": "^9.0.0"
+    "reactflow": "^11.10.1",
+    "tailwindcss": "3.4.1",
+    "typescript": "5.3.3",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/uuid": "^9.0.2"
+    "@types/uuid": "^9.0.7"
   }
 }

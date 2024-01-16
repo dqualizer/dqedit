@@ -83,11 +83,11 @@ const Canvas = () => {
   );
 
   useEffect(() => {
-    const data_file = fetch("http://localhost:3000/werkstatt.dst")
+    const data_file = fetch("/werkstatt.dst")
       .then((file) => file.text())
       .then((data) => parse_domain_story(data))
       .then(({ domain, dsts }) => {
-        fetch("http://localhost:3000/api.json")
+        fetch("/api.json")
           .then((file) => file.text())
           .then((data) => new DomainStoryImpl(domain, dsts, parse_api(data)))
           .then((data) => {
