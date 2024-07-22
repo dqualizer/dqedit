@@ -1,0 +1,20 @@
+{
+  "files.exclude": {
+    ".devenv/": true,
+    ".direnv/": true,
+    ".editorconfig": true,
+    ".envrc": true,
+    ".npmrc": true,
+    ".svelte-kit": true,
+    "*.config.{t,j}s": true,
+    "*.md": true,
+    "*lock*": true,
+    "biome.json": true,
+    "components.json": true,
+    "doc/": true,
+    "LICENSE": true,
+    "node_modules": true,
+    "tests/": true,
+    "tsconfig.json": true
+  }
+}

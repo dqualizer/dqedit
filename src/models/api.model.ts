@@ -35,7 +35,7 @@ export class ApiImpl implements Api {
     context: string,
     api: string,
     server_info: { host: string; environment: string },
-    field: Map<string, Field>
+    field: Map<string, Field>,
   ) {
     this.version = version;
     this.context = context;
@@ -47,7 +47,15 @@ export class ApiImpl implements Api {
 
 export const parse = (input: string): Api => {
   const parsed: Api = JSON.parse(input);
-  parsed.field = new Map(Object.entries(parsed.field));
-  parsed.field.forEach((field) => (field.dq_id = v4()));
-  return parsed;
+  const fieldMap = new Map<string, Field>();
+  for (const [operation_id, field] of Object.entries(parsed.field)) {
+    fieldMap.set(operation_id, {
+      ...field,
+      dq_id: v4(),
+    });
+  }
+  return {
+    ...parsed,
+    field: fieldMap,
+  };
 };

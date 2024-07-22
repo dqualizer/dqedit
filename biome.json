@@ -1,0 +1,55 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.8.1/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "overrides": [
+    {
+      "include": [
+        "*.svelte",
+        "*.astro",
+        "*.vue"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "useConst": "off",
+            "useImportType": "off"
+          }
+        }
+      }
+    }
+  ],
+  "files": {
+    "ignore": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/coverage/**",
+      "**/.svelte-kit/**",
+      "**/old/**",
+      "**/.devenv/**",
+      "**/.direnv/**",
+      "**/.git/**",
+      "**/.github/**",
+      "**/.vscode/**",
+      "doc/**"
+    ],
+    "include": [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.svelte"
+    ]
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "lineEnding": "lf"
+  }
+}
