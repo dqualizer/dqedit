@@ -1,4 +1,5 @@
 <script lang="ts">
+  import NumberEdge from '$components/graph/NumberEdge.svelte';
   import dagre from '@dagrejs/dagre';
   import {
     Background,
@@ -59,16 +60,21 @@
   const edges = writable<Edge[]>(layoutedEdges);
 
   const isLocked = true;
+
+  const edgeTypes = {
+    numberEdge: NumberEdge,
+  };
 </script>
 
 <SvelteFlow
   {nodes}
   {edges}
+  {edgeTypes}
   nodesConnectable={!isLocked}
   fitView
   on:nodeclick={(event) => console.log("on node click", event.detail.node)}
 >
   <Controls />
   <Background variant={BackgroundVariant.Dots} />
-  <MiniMap class="hidden lg:block" />#
+  <MiniMap class="hidden lg:block" />
 </SvelteFlow>
